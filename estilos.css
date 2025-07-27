@@ -1,1 +1,147 @@
+/* Estilos Generales y Tipografía */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+header, footer {
+    text-align: center;
+    margin-bottom: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+h1 {
+    color: #0d47a1;
+    font-weight: 700;
+}
+
+/* Contenedor Principal de la Malla */
+.malla-curricular {
+    display: flex;
+    flex-wrap: nowrap; /* Evita que las columnas se envuelvan por defecto */
+    gap: 15px;
+    width: 100%;
+    max-width: 1800px;
+    padding-bottom: 20px;
+    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
+
+/* Columnas de Semestre */
+.semestre {
+    flex: 0 0 220px; /* Base de 220px, no crece, no se encoge */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding: 15px;
+}
+
+.semestre h2 {
+    font-size: 1.1em;
+    color: #1565c0;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Tarjetas de Ramo */
+.ramo {
+    background-color: #e3f2fd; /* Azul claro base */
+    color: #0d47a1;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 5px solid #42a5f5; /* Borde de color para estado por defecto */
+    position: relative;
+}
+
+.ramo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Ramo Aprobado */
+.ramo.aprobado {
+    background-color: #607d8b; /* Gris azulado */
+    color: #ffffff;
+    text-decoration: line-through;
+    border-left-color: #455a64; /* Borde gris oscuro */
+}
+
+/* Ramo Bloqueado */
+.ramo.bloqueado {
+    background-color: #eceff1; /* Gris muy claro */
+    color: #90a4ae;
+    cursor: not-allowed;
+    border-left-color: #b0bec5;
+    opacity: 0.8;
+}
+
+.ramo.bloqueado::after {
+    content: '🔒';
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 0.8em;
+}
+
+/* Notificaciones de Requisitos */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff7043; /* Naranja para alerta */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-size: 1em;
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.notificacion.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Diseño Responsivo para Celulares */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .malla-curricular {
+        /* Se mantiene el scroll horizontal que es más práctico para mallas */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .semestre {
+        flex: 0 0 180px; /* Columnas un poco más angostas en móvil */
+    }
+
+    .ramo {
+        font-size: 0.85em;
+        padding: 10px;
+    }
+}
